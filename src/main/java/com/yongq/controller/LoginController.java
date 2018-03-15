@@ -31,4 +31,10 @@ public class LoginController {
 		
 		return "Student/Student_Login";
 	}
+	
+	@RequestMapping(value="/admin")
+	String admin_login() {
+		
+		return "Admin/Admin_Login";
+	}
 }
