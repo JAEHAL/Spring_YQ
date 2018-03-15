@@ -24,7 +24,7 @@
 </table><br>
 <input type="submit" value="로그인"> <!-- onclick="return loginCheck()" -->
 <input type="reset" value="취소">
-<h2>${message}</h2>
+<%-- <h2>${message}</h2> --%>
 </form>
 <form method="post" action="Admin_Login_Page.jsp">
 <input type="submit" value="관리자 페이지">
