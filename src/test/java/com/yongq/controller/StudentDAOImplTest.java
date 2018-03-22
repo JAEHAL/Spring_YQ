@@ -13,6 +13,6 @@ public class StudentDAOImplTest extends AbstractTest {
 	
 	@Test
 	public void get() {
-		logger.info(""+dao.get());
+		logger.info(""+dao.getInfo());
 	}
 }

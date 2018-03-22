@@ -3,6 +3,8 @@ package com.yongq.s_dao;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -19,8 +21,12 @@ public class StudentDAOImpl implements StudentDAO {
 			"com.yongq.mapper.MyMapper";
 	
 	@Override
-	public List<StudentVO> get() {
+	public List<StudentVO> getInfo() {
 		return sqlSession.selectList(namespace + ".get");
 	}
 
+	@Override
+	public List<StudentVO> LoginCheck(HttpServletRequest request, HttpSession session) {
+		return sqlSession.selectList(namespace + ".LoginCheck");
+	}
 }

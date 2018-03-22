@@ -7,4 +7,8 @@
 	<select id="get" resultType="com.yongq.s_dto.StudentVO">
 		select * from student
 	</select>
+	
+	<select id="LoginCheck" resultType="com.yongq.s_dto.StudentVO">
+		select stu_pw from student where stu_id=#{param1}
+	</select>
 </mapper>

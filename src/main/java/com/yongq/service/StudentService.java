@@ -1,4 +1,4 @@
-package com.yongq.s_dao;
+package com.yongq.service;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import com.yongq.s_dto.StudentVO;
 
-public interface StudentDAO {
+public interface StudentService {
 	public List<StudentVO> getInfo();
 	public List<StudentVO> LoginCheck(HttpServletRequest request, HttpSession session);
 }
