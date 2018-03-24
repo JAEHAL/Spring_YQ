@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yongq.s_dto.StudentVO;
@@ -14,7 +14,7 @@ import com.yongq.s_dto.StudentVO;
 @Repository
 public class StudentDAOImpl implements StudentDAO {
 	
-	@Inject
+	@Autowired
 	private SqlSession sqlSession;
 	
 	private static final String namespace =
@@ -22,11 +22,12 @@ public class StudentDAOImpl implements StudentDAO {
 	
 	@Override
 	public List<StudentVO> getInfo() {
-		return sqlSession.selectList(namespace + ".get");
+		return sqlSession.selectList(namespace + ".getInfo");
 	}
 
 	@Override
-	public List<StudentVO> LoginCheck(HttpServletRequest request, HttpSession session) {
+	public List<StudentVO> LoginCheck(String stu_id) {
+		
 		return sqlSession.selectList(namespace + ".LoginCheck");
 	}
 }

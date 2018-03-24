@@ -15,19 +15,33 @@ import com.yongq.s_dto.StudentVO;
 public class StudentServiceImpl implements StudentService {
 
 	@Inject
-	StudentDAO studentDao;
+	StudentDAO sDao;
 	
 	@Override
 	public List<StudentVO> getInfo() {
 		
-		List<StudentVO> list = studentDao.getInfo();
+		List<StudentVO> list = sDao.getInfo();
 		
 		return list;
 	}
 	
 	@Override
-	public List<StudentVO> LoginCheck(HttpServletRequest request, HttpSession session) {
+	public List<StudentVO> LoginCheck(HttpServletRequest request) {
 	
+		StudentVO sVo = null;
+		List<StudentVO> loginInfo = sDao.LoginCheck(request.getParameter("stu_id"));
+		
+		//입력한 아이디 비밀번호 출력
+		System.out.println("비번" + loginInfo.toString());
+		
+		if(!request.getParameter("stu_pw").equals("") && request.getParameter("stu_pw").equals(loginInfo.toString())) {
+			
+			return loginInfo;
+		} else {
+			
+			return null;
+		}
+	}
 		/*//로그인 성공
 		if(stu_pw.equals(sVo.getStu_pw()) && stu_id.equals(sVo.getStu_id())) {
 			
@@ -47,8 +61,8 @@ public class StudentServiceImpl implements StudentService {
 			return result;
 		}*/
 		
-		List<StudentVO> list = studentDao.LoginCheck(request, session);
+		/*List<StudentVO> list = studentDao.LoginCheck(request, session);
 		
-		return list;
-	}
+		return list;*/
+
 }

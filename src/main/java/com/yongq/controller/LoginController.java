@@ -42,10 +42,20 @@ public class LoginController {
 	}
 	
 	//로그인 작동
-	@RequestMapping(value="Login.do")
-	String LoginDo(HttpServletRequest request, StudentVO sVo, Model model, HttpSession session) {
+	@RequestMapping(value="/Login.do")
+	String LoginDo(HttpServletRequest request) {
 		
-	return "";
+		//String stu_id = request.getParameter("stu_id");
+		//String stu_pw = request.getParameter("stu_pw");
+		
+		List<StudentVO> result = sDao.LoginCheck(request);
+		
+		if(result.equals("loginInfo")) {
+			
+			return "Student/Student_Main";
+		} else {
+			return "Student/Student_Login";
+		}
 	}
 		/*String result = sDao.LoginCheck(request, sVo, session);
 		

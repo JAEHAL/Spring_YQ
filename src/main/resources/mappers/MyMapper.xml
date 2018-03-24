@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.yongq.mapper.MyMapper">
-	<select id="get" resultType="com.yongq.s_dto.StudentVO">
+	<select id="getInfo" resultType="com.yongq.s_dto.StudentVO">
 		select * from student
 	</select>
 	
