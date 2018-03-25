@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.yongq.s_dao.StudentDAO;
 import com.yongq.s_dto.StudentVO;
@@ -26,13 +26,13 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	@Override
-	public List<StudentVO> LoginCheck(HttpServletRequest request) {
+	public List<StudentVO> LoginCheck() {
 	
-		StudentVO sVo = null;
-		List<StudentVO> loginInfo = sDao.LoginCheck(request.getParameter("stu_id"));
+		return sDao.LoginCheck();
+		/*List<StudentVO> loginInfo = sDao.LoginCheck(request.getParameter("stu_id"));
 		
 		//입력한 아이디 비밀번호 출력
-		System.out.println("비번" + loginInfo.toString());
+		System.out.println("비번" + loginInfo.get(0).toString());
 		
 		if(!request.getParameter("stu_pw").equals("") && request.getParameter("stu_pw").equals(loginInfo.toString())) {
 			
@@ -40,7 +40,7 @@ public class StudentServiceImpl implements StudentService {
 		} else {
 			
 			return null;
-		}
+		}*/
 	}
 		/*//로그인 성공
 		if(stu_pw.equals(sVo.getStu_pw()) && stu_id.equals(sVo.getStu_id())) {

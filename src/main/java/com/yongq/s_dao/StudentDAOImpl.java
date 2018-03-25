@@ -3,10 +3,8 @@ package com.yongq.s_dao;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.yongq.s_dto.StudentVO;
@@ -14,7 +12,7 @@ import com.yongq.s_dto.StudentVO;
 @Repository
 public class StudentDAOImpl implements StudentDAO {
 	
-	@Autowired
+	@Inject
 	private SqlSession sqlSession;
 	
 	private static final String namespace =
@@ -26,8 +24,11 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 
 	@Override
-	public List<StudentVO> LoginCheck(String stu_id) {
+	public List<StudentVO> LoginCheck() {
 		
-		return sqlSession.selectList(namespace + ".LoginCheck");
+		StudentVO sVo = new StudentVO();
+		sVo.setStu_id("201233008");
+		
+		return sqlSession.selectList(namespace + ".LoginCheck", sVo);
 	}
 }
