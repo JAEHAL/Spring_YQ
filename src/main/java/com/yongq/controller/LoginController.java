@@ -43,43 +43,37 @@ public class LoginController {
 	
 	//로그인 작동
 	@RequestMapping(value="/Login.do")
-	String LoginDo(Model model) {
+	String LoginDo(Model model, HttpServletRequest request) {
 		
-		List<StudentVO> check_get_info = sDao.LoginCheck();
+		//String stu_id = request.getParameter("stu_id");
+		String stu_pw = request.getParameter("stu_pw");
+		
+		List<StudentVO> ckech_login = sDao.LoginCheck(request);
+		
+		if(!stu_pw.equals("") && stu_pw.equals(ckech_login.toString())) {
+		
+			List<StudentVO> login_info = sDao.LoginInfo(request);
+			
+			model.addAttribute("login_info", login_info);
+			
+			logger.info("로그인 성공");
+			
+			return "Student/Student_Main";
+		} else {
+			logger.info("로그인 실패");
+			
+			return "Student/Student_Login";
+		}
+		
+		/*List<StudentVO> check_get_info = sDao.LoginCheck(request);
 		
 		model.addAttribute("test", check_get_info);
 		
-		return "Student/Student_Main";
-		/*String stu_id = request.getParameter("stu_id");
-		//String stu_pw = request.getParameter("stu_pw");
-		
-		List<StudentVO> result = sDao.LoginCheck(request, stu_id);
-		
-		if(result.equals("loginInfo")) {
-			
-			return "Student/Student_Main";
-		} else {
-			return "Student/Student_Login";
-		}*/
+		logger.info("로그인 성공");
+		logger.info("아이디 : " + request.getParameter("stu_id"));
+		logger.info("비번 : " + check_get_info);
+		*/
 	}
-		/*String result = sDao.LoginCheck(request, sVo, session);
-		
-		if(result.equals("sc")){
-			logger.info("로그인 성공");
-			
-			String stu_name = (String)session.getAttribute("stu_name");
-			logger.info(stu_name);
-			model.addAttribute("stu_name", stu_name);
-			
-			return "Student/Student_Main";
-		} else if(result.equals("!sc2")) {
-			logger.info("존재하지 않는 아이디 or 비번 틀림");
-		} else {
-			logger.info("아이디 비번 빈칸");
-		}
-		
-		return result;*/
-	
 	
 	@RequestMapping(value="/admin")
 	String admin_login() {

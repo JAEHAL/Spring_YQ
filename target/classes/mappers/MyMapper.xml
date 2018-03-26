@@ -8,7 +8,13 @@
 		select * from student
 	</select>
 	
+	<!-- 로그인 -->
 	<select id="LoginCheck" parameterType="com.yongq.s_dto.StudentVO" resultType="com.yongq.s_dto.StudentVO">
 		select stu_pw from student where stu_id=#{stu_id}
+	</select>
+	
+	<!-- 로그인한 정보 -->
+	<select id="LoginInfo" parameterType="com.yongq.s_dto.StudentVO" resultType="com.yongq.s_dto.StudentVO">
+		select * from student where stu_id=#{stu_id} and stu_pw=#{stu_pw}
 	</select>
 </mapper>
