@@ -4,17 +4,27 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.yongq.mapper.MyMapper">
-	<select id="getInfo" resultType="com.yongq.s_dto.StudentVO">
+	<!-- <select id="getInfo" resultType="com.yongq.s_dto.StudentVO">
 		select * from student
-	</select>
+	</select> -->
 	
-	<!-- 로그인 -->
+	<!-- 학생 로그인 -->
 	<select id="LoginCheck" parameterType="com.yongq.s_dto.StudentVO" resultType="com.yongq.s_dto.StudentVO">
 		select stu_pw from student where stu_id=#{stu_id}
 	</select>
 	
-	<!-- 로그인한 정보 -->
+	<!-- 학생 로그인한 정보 -->
 	<select id="LoginInfo" parameterType="com.yongq.s_dto.StudentVO" resultType="com.yongq.s_dto.StudentVO">
 		select * from student where stu_id=#{stu_id} and stu_pw=#{stu_pw}
+	</select>
+	
+	<!-- 관리자 로그인 -->
+	<select id="AdminCheck" parameterType="com.yongq.a_dto.AdminVO" resultType="com.yongq.a_dto.AdminVO">
+		select ad_pw from admin where ad_id=#{ad_id}
+	</select>
+	
+	<!-- 로그인한 관리자 정보 -->
+	<select id="AdminInfo" parameterType="com.yongq.a_dto.AdminVO" resultType="com.yongq.a_dto.AdminVO">
+		select * from admin where ad_id=#{ad_id} and ad_pw=#{ad_pw}
 	</select>
 </mapper>

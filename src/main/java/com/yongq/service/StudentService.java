@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.yongq.s_dto.StudentVO;
 
 public interface StudentService {
-	public List<StudentVO> getInfo();
+	//public List<StudentVO> getInfo();
 	public List<StudentVO> LoginCheck(HttpServletRequest request);
 	public List<StudentVO> LoginInfo(HttpServletRequest request);
 }

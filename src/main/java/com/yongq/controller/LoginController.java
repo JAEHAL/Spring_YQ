@@ -4,15 +4,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.yongq.a_dto.AdminVO;
+import com.yongq.a_service.AdminService;
 import com.yongq.s_dto.StudentVO;
 import com.yongq.service.StudentService;
 
@@ -23,15 +23,26 @@ public class LoginController {
 	
 	@Inject
 	StudentService sDao;
+	AdminService aDao;
 	
 	//db값 테스트
-	@RequestMapping(value="/student")
+	/*@RequestMapping(value="/student")
 	String student(StudentVO sVo, Model model) {
 		List<StudentVO> list = sDao.getInfo();
 		
 		model.addAttribute("lists", list);
 		
 		return "student";
+	}*/
+	
+	//관리자 예제
+	@RequestMapping(value="/admin_ex")
+	String admin(Model model, HttpServletRequest request) {
+		List<AdminVO> list = aDao.AdminCheck(request);
+		
+		model.addAttribute("ex", list);
+		
+		return "admin";
 	}
 	
 	//학생 로그인 화면
@@ -48,9 +59,12 @@ public class LoginController {
 		//String stu_id = request.getParameter("stu_id");
 		String stu_pw = request.getParameter("stu_pw");
 		
-		List<StudentVO> ckech_login = sDao.LoginCheck(request);
+		List<StudentVO> check_login = sDao.LoginCheck(request);
 		
-		if(!stu_pw.equals("") && stu_pw.equals(ckech_login.toString())) {
+		String pwd = check_login.get(0).getStu_pw();
+		//logger.info("비번 저장" + pwd);
+		
+		if(!stu_pw.equals("") && stu_pw.equals(pwd)) {
 		
 			List<StudentVO> login_info = sDao.LoginInfo(request);
 			
@@ -65,19 +79,41 @@ public class LoginController {
 			return "Student/Student_Login";
 		}
 		
-		/*List<StudentVO> check_get_info = sDao.LoginCheck(request);
-		
-		model.addAttribute("test", check_get_info);
-		
-		logger.info("로그인 성공");
-		logger.info("아이디 : " + request.getParameter("stu_id"));
-		logger.info("비번 : " + check_get_info);
-		*/
 	}
 	
+	//관리자 로그인 화면
 	@RequestMapping(value="/admin")
 	String admin_login() {
 		
 		return "Admin/Admin_Login";
+	}
+	
+	//관리자 로그인 작동
+	@RequestMapping(value="/Admin.do")
+	String AdminDo (Model model, HttpServletRequest request) {
+		
+		String ad_pw = request.getParameter("ad_pw");
+		
+		List<AdminVO> check_login = aDao.AdminCheck(request);
+		
+		model.addAttribute("ex", check_login);
+		
+		String pwd = check_login.get(0).getAd_pw();
+		//logger.info("비번 저장" + pwd);
+		
+		if(!ad_pw.equals("") && ad_pw.equals(pwd)) {
+		
+			List<AdminVO> login_info = aDao.AdminInfo(request);
+			
+			model.addAttribute("login_info", login_info);
+			
+			logger.info("로그인 성공");
+			
+			return "Admin/Admin_Main";
+		} else {
+			logger.info("로그인 실패");
+			
+			return "Admin/Admin_Login";
+		}
 	}
 }

@@ -24,6 +24,8 @@
 	<context:component-scan base-package="com.yongq.controller" />
 	<context:component-scan base-package="com.yongq.s_dao" />
 	<context:component-scan base-package="com.yongq.service" />
+	<context:component-scan base-package="com.yongq.a_dao" />
+	<context:component-scan base-package="com.yongq.a_service" />
 	
 	
 	

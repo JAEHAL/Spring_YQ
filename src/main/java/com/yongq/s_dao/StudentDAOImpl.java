@@ -19,10 +19,10 @@ public class StudentDAOImpl implements StudentDAO {
 	private static final String namespace =
 			"com.yongq.mapper.MyMapper";
 	
-	@Override
+	/*@Override
 	public List<StudentVO> getInfo() {
 		return sqlSession.selectList(namespace + ".getInfo");
-	}
+	}*/
 
 	@Override
 	public List<StudentVO> LoginCheck(HttpServletRequest request) {

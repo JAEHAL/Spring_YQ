@@ -16,18 +16,18 @@ public class StudentServiceImpl implements StudentService {
 	@Inject
 	StudentDAO sDao;
 	
-	@Override
+	/*@Override
 	public List<StudentVO> getInfo() {
 		
 		List<StudentVO> list = sDao.getInfo();
 		
 		return list;
-	}
+	}*/
 	
 	@Override
 	public List<StudentVO> LoginCheck(HttpServletRequest request) {
 	
-		List<StudentVO> login_check = sDao.LoginCheck(request);
+		//List<StudentVO> login_check = sDao.LoginCheck(request);
 		
 		return sDao.LoginCheck(request);
 		
