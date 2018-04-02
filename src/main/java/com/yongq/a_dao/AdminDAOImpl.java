@@ -37,6 +37,12 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		return sqlSession.selectList(namespace + ".AdminInfo", aVo);
 	}
+
+	@Override
+	public List<AdminVO> Admin() {
+		
+		return sqlSession.selectList(namespace, ".Admin");
+	}
 	
 	
 }

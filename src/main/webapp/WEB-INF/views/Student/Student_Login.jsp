@@ -26,7 +26,7 @@
 <input type="reset" value="취소">
 <%-- <h2>${message}</h2> --%>
 </form>
-<form method="post" action="Admin_Login_Page.jsp">
+<form method="post" action="Ad_Login_Page.do">
 <input type="submit" value="관리자 페이지">
 </form>
 </center>

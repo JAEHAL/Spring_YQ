@@ -26,7 +26,7 @@
 <input type="reset" value="취소">
 <%-- <h2>${message}</h2> --%>
 </form>
-<form method="post" action="Student_Login_Page.jsp">
+<form method="post" action="Stu_Login_Page.do">
 <input type="submit" value="학생 로그인">
 </form>
 </center>

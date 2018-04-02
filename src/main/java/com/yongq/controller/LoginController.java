@@ -38,7 +38,8 @@ public class LoginController {
 	//관리자 예제
 	@RequestMapping(value="/admin_ex")
 	String admin(Model model, HttpServletRequest request) {
-		List<AdminVO> list = aDao.AdminCheck(request);
+		
+		List<AdminVO> list = aDao.Admin();
 		
 		model.addAttribute("ex", list);
 		
@@ -47,7 +48,7 @@ public class LoginController {
 	
 	//학생 로그인 화면
 	@RequestMapping(value="/login")
-	String stu_login(){
+	String student_login(){
 		
 		return "Student/Student_Login";
 	}
@@ -82,10 +83,17 @@ public class LoginController {
 	}
 	
 	//관리자 로그인 화면
-	@RequestMapping(value="/admin")
-	String admin_login() {
+	@RequestMapping(value="/Ad_Login_Page.do")
+	String admin_login_page() {
 		
 		return "Admin/Admin_Login";
+	}
+	
+	//관리자에서 학생 로그인 화면
+	@RequestMapping(value="/Stu_Login_Page.do")
+	String student_login_page() {
+		
+		return "Student/Student_Login";
 	}
 	
 	//관리자 로그인 작동

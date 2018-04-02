@@ -28,5 +28,13 @@ public class AdminServiceImpl implements AdminService {
 		return aDao.AdminInfo(request);
 	}
 
+	@Override
+	public List<AdminVO> Admin() {
+		
+		List<AdminVO> list = aDao.Admin();
+		
+		return list;
+	}
+
 	
 }
