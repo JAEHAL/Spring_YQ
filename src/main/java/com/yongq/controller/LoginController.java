@@ -122,4 +122,12 @@ public class LoginController {
 			return "Admin/Admin_Login";
 		}
 	}
+	
+	//로그아웃 작동
+	//나중에 session하면 session제거 작업 해주기
+	@RequestMapping(value="/Logout.do")
+	String Logout() {
+		
+		return "Student/Student_Login";
+	}
 }

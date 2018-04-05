@@ -5,18 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login success page</title>
+<title>학생 메인페에지</title>
 </head>
 <body>
-<form method="post" action="Student_Login_Page.jsp">
-<input type="submit" value="뒤로"></form>
 <div style="position:absolute; top:10px; left:370px">
 <a href="Student_Info.jsp">
 <c:forEach items="${login_info}" var="info">
 ${info.stu_name}님
 </c:forEach>
 </a>
-<form method="post" action="Student_Login_Page.jsp"><input type="submit" value="로그아웃"></form>
+<form method="post" action="Logout.do">
+<input type="submit" value="로그아웃"></form>
 </div>
 		<form method="post" action="Menu.do">
 		<input type="submit" value="메뉴보기"></form>
