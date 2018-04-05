@@ -1,4 +1,4 @@
-package com.yongq.service;
+package com.yongq.s_service;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class StudentServiceImpl implements StudentService {
 	}*/
 	
 	@Override
-	public List<StudentVO> LoginCheck(HttpServletRequest request) {
+	public StudentVO LoginCheck(HttpServletRequest request) {
 	
 		//List<StudentVO> login_check = sDao.LoginCheck(request);
 		

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yongq.a_dto.AdminVO;
 import com.yongq.a_service.AdminService;
 import com.yongq.s_dto.StudentVO;
-import com.yongq.service.StudentService;
+import com.yongq.s_service.StudentService;
 
 @Controller
 public class LoginController {
@@ -54,18 +54,16 @@ public class LoginController {
 	}
 	
 	//로그인 작동
+	//다른페이지에서 메인페이지로 뒤로가기 눌렀을 때 처리 하기 위한 session 찾아보기
 	@RequestMapping(value="/Login.do")
 	String LoginDo(Model model, HttpServletRequest request) {
 		
 		//String stu_id = request.getParameter("stu_id");
 		String stu_pw = request.getParameter("stu_pw");
 		
-		List<StudentVO> check_login = sDao.LoginCheck(request);
+		StudentVO check_login = sDao.LoginCheck(request);
 		
-		String pwd = check_login.get(0).getStu_pw();
-		//logger.info("비번 저장" + pwd);
-		
-		if(!stu_pw.equals("") && stu_pw.equals(pwd)) {
+		if(!stu_pw.equals("") && stu_pw.equals(check_login.getStu_pw())) {
 		
 			List<StudentVO> login_info = sDao.LoginInfo(request);
 			

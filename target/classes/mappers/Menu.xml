@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.yongq.mapper.Menu">
+
+	<!-- 인성관 메뉴 -->
+	<select id="Insung_Menu" parameterType="com.yongq.s_dto.MenuVO" resultType="com.yongq.s_dto.MenuVO">
+		select * from menu where chain=#{chain} and date=#{date}
+	</select>
+
+	<!-- 환과대 메뉴 -->
+	<select id="Hwan_Menu" parameterType="com.yongq.s_dto.MenuVO" resultType="com.yongq.s_dto.MenuVO">
+		select * from menu where chain=#{chain} and date=#{date}
+	</select>
+	
+	<!-- 생활관 메뉴 -->
+	<select id="Dorm_Menu" parameterType="com.yongq.s_dto.MenuVO" resultType="com.yongq.s_dto.MenuVO">
+		select * from menu where chain=#{chain} and date=#{date}
+	</select>
+	
+	<!-- 주간 메뉴 -->
+	<select id="Week_Menu" parameterType="com.yongq.s_dto.MenuVO" resultType="com.yongq.s_dto.MenuVO">
+		select * from menu where date >= date_add(curdate(), interval (dayofweek(curdate())-2)*- 1 day) order by chain, date DESC
+	</select>
+	
+</mapper>

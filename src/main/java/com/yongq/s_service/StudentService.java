@@ -1,4 +1,4 @@
-package com.yongq.service;
+package com.yongq.s_service;
 
 import java.util.List;
 
@@ -8,6 +8,6 @@ import com.yongq.s_dto.StudentVO;
 
 public interface StudentService {
 	//public List<StudentVO> getInfo();
-	public List<StudentVO> LoginCheck(HttpServletRequest request);
+	public StudentVO LoginCheck(HttpServletRequest request);
 	public List<StudentVO> LoginInfo(HttpServletRequest request);
 }

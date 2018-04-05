@@ -17,7 +17,7 @@ public class StudentDAOImpl implements StudentDAO {
 	private SqlSession sqlSession;
 	
 	private static final String namespace =
-			"com.yongq.mapper.MyMapper";
+			"com.yongq.mapper.student_login";
 	
 	/*@Override
 	public List<StudentVO> getInfo() {
@@ -25,13 +25,13 @@ public class StudentDAOImpl implements StudentDAO {
 	}*/
 
 	@Override
-	public List<StudentVO> LoginCheck(HttpServletRequest request) {
+	public StudentVO LoginCheck(HttpServletRequest request) {
 		
 		StudentVO sVo = new StudentVO();
 		//sVo.setStu_id("201233008");
 		sVo.setStu_id(request.getParameter("stu_id"));
 		
-		return sqlSession.selectList(namespace + ".LoginCheck", sVo);
+		return sqlSession.selectOne(namespace + ".LoginCheck", sVo);
 	}
 	
 	@Override
@@ -39,7 +39,6 @@ public class StudentDAOImpl implements StudentDAO {
 		
 		StudentVO sVo = new StudentVO();
 		sVo.setStu_id(request.getParameter("stu_id"));
-		sVo.setStu_pw(request.getParameter("stu_pw"));
 		
 		return sqlSession.selectList(namespace + ".LoginInfo", sVo);
 	}

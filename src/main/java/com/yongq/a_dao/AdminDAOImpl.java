@@ -17,7 +17,7 @@ public class AdminDAOImpl implements AdminDAO {
 	private SqlSession sqlSession;
 	
 	private static final String namespace =
-			"com.yongq.mapper.MyMapper";
+			"com.yongq.mapper.admin_login";
 
 	@Override
 	public List<AdminVO> AdminCheck(HttpServletRequest request) {
