@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,21 +57,33 @@ public class LoginController {
 	//로그인 작동
 	//다른페이지에서 메인페이지로 뒤로가기 눌렀을 때 처리 하기 위한 session 찾아보기
 	@RequestMapping(value="/Login.do")
-	String LoginDo(Model model, HttpServletRequest request) {
+	String LoginDo(Model model, HttpServletRequest request, HttpSession session) {
 		
-		//String stu_id = request.getParameter("stu_id");
+		String stu_id = request.getParameter("stu_id");
 		String stu_pw = request.getParameter("stu_pw");
 		
 		StudentVO check_login = sDao.LoginCheck(request);
 		
 		if(!stu_pw.equals("") && stu_pw.equals(check_login.getStu_pw())) {
 		
-			List<StudentVO> login_info = sDao.LoginInfo(request);
+			StudentVO login_info = sDao.LoginInfo(request);
 			
-			model.addAttribute("login_info", login_info);
+			model.addAttribute("login_name", login_info.getStu_name());
 			
 			logger.info("로그인 성공");
 			
+			int stu_change = login_info.getStu_change();
+			//String stu_name = login_info.getStu_name();
+			//logger.info("잔액 : " + stu_change);
+			
+			session.setAttribute("login_id", stu_id);
+			session.setAttribute("login_change", stu_change);
+			//session.setAttribute("login_name", stu_name);
+			
+			/*
+			logger.info(stu_id);
+			logger.info(stu_name);
+			*/
 			return "Student/Student_Main";
 		} else {
 			logger.info("로그인 실패");

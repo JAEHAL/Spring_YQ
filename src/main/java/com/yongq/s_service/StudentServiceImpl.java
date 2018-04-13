@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 	
 	@Override
-	public List<StudentVO> LoginInfo(HttpServletRequest request) {
+	public StudentVO LoginInfo(HttpServletRequest request) {
 		
 		return sDao.LoginInfo(request);
 	}

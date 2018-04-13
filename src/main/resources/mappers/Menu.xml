@@ -22,7 +22,7 @@
 	
 	<!-- 주간 메뉴 -->
 	<select id="Week_Menu" parameterType="com.yongq.s_dto.MenuVO" resultType="com.yongq.s_dto.MenuVO">
-		select * from menu where date >= date_add(curdate(), interval (dayofweek(curdate())-2)*- 1 day) order by chain, date DESC
+		select * from menu where date >= date_add(curdate(), interval (dayofweek(curdate())-2)*- 1 day) order by chain, date ASC
 	</select>
 	
 </mapper>

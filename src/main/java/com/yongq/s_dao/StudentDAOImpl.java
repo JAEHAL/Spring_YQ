@@ -35,11 +35,11 @@ public class StudentDAOImpl implements StudentDAO {
 	}
 	
 	@Override
-	public List<StudentVO> LoginInfo(HttpServletRequest request) {
+	public StudentVO LoginInfo(HttpServletRequest request) {
 		
 		StudentVO sVo = new StudentVO();
 		sVo.setStu_id(request.getParameter("stu_id"));
 		
-		return sqlSession.selectList(namespace + ".LoginInfo", sVo);
+		return sqlSession.selectOne(namespace + ".LoginInfo", sVo);
 	}
 }

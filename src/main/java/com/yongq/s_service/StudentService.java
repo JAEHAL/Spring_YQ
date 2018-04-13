@@ -9,5 +9,5 @@ import com.yongq.s_dto.StudentVO;
 public interface StudentService {
 	//public List<StudentVO> getInfo();
 	public StudentVO LoginCheck(HttpServletRequest request);
-	public List<StudentVO> LoginInfo(HttpServletRequest request);
+	public StudentVO LoginInfo(HttpServletRequest request);
 }

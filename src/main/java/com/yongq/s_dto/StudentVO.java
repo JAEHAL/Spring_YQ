@@ -5,7 +5,7 @@ public class StudentVO {
 	private String stu_id;
 	private String stu_name;
 	private String stu_pw;
-	private String stu_change;
+	private int stu_change;
 	
 	public String getStu_id() {
 		return stu_id;
@@ -25,10 +25,10 @@ public class StudentVO {
 	public void setStu_pw(String stu_pw) {
 		this.stu_pw = stu_pw;
 	}
-	public String getStu_change() {
+	public int getStu_change() {
 		return stu_change;
 	}
-	public void setStu_change(String stu_change) {
+	public void setStu_change(int stu_change) {
 		this.stu_change = stu_change;
 	}
 	

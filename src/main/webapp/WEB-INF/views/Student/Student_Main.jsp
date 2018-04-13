@@ -10,8 +10,8 @@
 <body>
 <div style="position:absolute; top:10px; left:370px">
 <a href="Student_Info.jsp">
-<c:forEach items="${login_info}" var="info">
-${info.stu_name}님
+<c:forEach items="${login_name}" var="name">
+${name}님
 </c:forEach>
 </a>
 <form method="post" action="Logout.do">
@@ -19,7 +19,7 @@ ${info.stu_name}님
 </div>
 		<form method="post" action="Menu.do">
 		<input type="submit" value="메뉴보기"></form>
-		<form method="post" action="Student_Recharge.jsp">
+		<form method="post" action="Recharge.Page">
 		<input type="submit" value="충전하기"></form>
 		<form method="post" action="ViewUse.do">
 		<input type="submit" value="사용내역"></form>
