@@ -9,7 +9,7 @@
 </head>
 <body>
 <div style="position:absolute; top:10px; left:370px">
-<a href="Student_Info.jsp">
+<a href="Student_Info.do">
 <c:forEach items="${login_name}" var="name">
 ${name}님
 </c:forEach>

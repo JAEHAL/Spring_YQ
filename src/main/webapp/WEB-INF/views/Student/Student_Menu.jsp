@@ -8,7 +8,9 @@
 <title>메뉴 페이지</title>
 </head>
 <body>
-<!--<a href="Login.do">뒤로</a> -->
+<form method="post" action="back_main">
+<input type="submit" value="뒤로">
+</form>
 <center>
 <c:forEach items="${date}" var="today">
 <h2><a href="MenuWeek.do">${today}</a></h2>

@@ -1,7 +1,5 @@
 package com.yongq.s_dao;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,7 +26,6 @@ public class StudentDAOImpl implements StudentDAO {
 	public StudentVO LoginCheck(HttpServletRequest request) {
 		
 		StudentVO sVo = new StudentVO();
-		//sVo.setStu_id("201233008");
 		sVo.setStu_id(request.getParameter("stu_id"));
 		
 		return sqlSession.selectOne(namespace + ".LoginCheck", sVo);

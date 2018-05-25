@@ -36,6 +36,13 @@ public class LoginController {
 		return "student";
 	}*/
 	
+	//메인페이지로 돌아가기 버튼 작동
+	@RequestMapping(value="/back_main")
+	String back_main_page() {
+		
+		return "Student/Student_Main";
+	}
+	
 	//관리자 예제
 	@RequestMapping(value="/admin_ex")
 	String admin(Model model, HttpServletRequest request) {
@@ -57,7 +64,7 @@ public class LoginController {
 	//로그인 작동
 	//다른페이지에서 메인페이지로 뒤로가기 눌렀을 때 처리 하기 위한 session 찾아보기
 	@RequestMapping(value="/Login.do")
-	String LoginDo(Model model, HttpServletRequest request, HttpSession session) {
+	public String LoginDo(Model model, HttpServletRequest request, HttpSession session) {
 		
 		String stu_id = request.getParameter("stu_id");
 		String stu_pw = request.getParameter("stu_pw");
@@ -68,22 +75,23 @@ public class LoginController {
 		
 			StudentVO login_info = sDao.LoginInfo(request);
 			
-			model.addAttribute("login_name", login_info.getStu_name());
-			
 			logger.info("로그인 성공");
+			//logger.info(login_info.getStu_name());
 			
 			int stu_change = login_info.getStu_change();
-			//String stu_name = login_info.getStu_name();
+			String stu_name = login_info.getStu_name();
 			//logger.info("잔액 : " + stu_change);
 			
-			session.setAttribute("login_id", stu_id);
-			session.setAttribute("login_change", stu_change);
-			//session.setAttribute("login_name", stu_name);
+			session.setAttribute("login_info", login_info);
 			
-			/*
-			logger.info(stu_id);
-			logger.info(stu_name);
-			*/
+			session.setAttribute("login_id", stu_id); // 충전 시 학생 정보 변경을 위한 세션
+			session.setAttribute("login_change", stu_change); // 충전 할 때 db정보 바뀌기위한 세션
+			session.setAttribute("login_name", stu_name); // 메인페이지 학생 이름 보여주기 위한 세션
+		
+			model.addAttribute("login_name", stu_name); // 로그인한 학생 이름
+			
+			model.addAttribute("login_info", login_info);
+	
 			return "Student/Student_Main";
 		} else {
 			logger.info("로그인 실패");
@@ -91,6 +99,13 @@ public class LoginController {
 			return "Student/Student_Login";
 		}
 		
+	}
+	
+	//메인페이지에서 학생정보로 넘어가는 작동
+	@RequestMapping(value="/Student_Info.do")
+	String student_info_page(HttpServletRequest request, Model model, HttpSession session) {
+		
+		return "Student/Student_Info";
 	}
 	
 	//관리자 로그인 화면
