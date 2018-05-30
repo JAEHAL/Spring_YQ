@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.yongq.mapper.Student_Foruse">
+
+	<!-- 학생이 금액을 사용했을 때 foruse 테이블에 추가 -->
+	<insert id="foruse_sql" parameterType="com.yongq.s_dto.ForuseVO">
+		insert into foruse(stu_id, date, mn_price, f_use) values (#{stu_id},#{date},'5000','사용')
+	</insert>
+	
+	<!-- 학생이 금액을 사용했을 때 학생 잔액 변경 -->
+	<update id="foruse_sql2" parameterType="com.yongq.s_dto.StudentVO">
+		update student set stu_change = #{stu_change} where stu_id = #{stu_id}
+	</update>
+</mapper>

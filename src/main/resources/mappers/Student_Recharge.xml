@@ -8,9 +8,7 @@
 	<!-- 충전 했을때 foruse 테이블에 내역 추가-->
 	<insert id="recharge_sql" parameterType="com.yongq.s_dto.ForuseVO">
 		insert into foruse(stu_id, date, mn_price, f_use) values (#{stu_id},#{date},#{mn_price},'충전')
-		<!-- update student set stu_change = stu_change + #{mn_price} where stu_id=#{stu_id} -->
 	</insert>
-	
 	
 	<!-- 충전 했을때 학생 가격 정보 업데이트 -->
 	<update id="recharge_sql2" parameterType="com.yongq.s_dto.StudentVO">

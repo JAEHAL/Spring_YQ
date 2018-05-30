@@ -82,15 +82,9 @@ public class LoginController {
 			String stu_name = login_info.getStu_name();
 			//logger.info("잔액 : " + stu_change);
 			
-			session.setAttribute("login_info", login_info);
-			
 			session.setAttribute("login_id", stu_id); // 충전 시 학생 정보 변경을 위한 세션
 			session.setAttribute("login_change", stu_change); // 충전 할 때 db정보 바뀌기위한 세션
 			session.setAttribute("login_name", stu_name); // 메인페이지 학생 이름 보여주기 위한 세션
-		
-			model.addAttribute("login_name", stu_name); // 로그인한 학생 이름
-			
-			model.addAttribute("login_info", login_info);
 	
 			return "Student/Student_Main";
 		} else {
@@ -103,7 +97,7 @@ public class LoginController {
 	
 	//메인페이지에서 학생정보로 넘어가는 작동
 	@RequestMapping(value="/Student_Info.do")
-	String student_info_page(HttpServletRequest request, Model model, HttpSession session) {
+	String student_info_page() {
 		
 		return "Student/Student_Info";
 	}

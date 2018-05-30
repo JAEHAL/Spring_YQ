@@ -69,6 +69,8 @@ public class RechargeDAOImpl implements RechargeDAO {
 		sVo.setStu_change(update_stu_change);
 		sVo.setStu_id(stu_id);
 		
+		session.setAttribute("new_change", sVo.getStu_change()); // 바뀐 학생 잔액값 저장
+		
 		return sqlSession.selectList(namespace + ".recharge_sql2", sVo);
 	}
 }

@@ -9,11 +9,7 @@
 </head>
 <body>
 <div style="position:absolute; top:10px; left:370px">
-<a href="Student_Info.do">
-<c:forEach items="${login_name}" var="name">
-${name}님
-</c:forEach>
-</a>
+<a href="Student_Info.do">${login_name}님</a>
 <form method="post" action="Logout.do">
 <input type="submit" value="로그아웃"></form>
 </div>
