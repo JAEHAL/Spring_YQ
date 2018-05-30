@@ -14,4 +14,19 @@
 	<update id="recharge_sql2" parameterType="com.yongq.s_dto.StudentVO">
 		update student set stu_change = #{stu_change} where stu_id=#{stu_id}
 	</update>
+	
+	<!-- 1주일 충전내역 -->
+	<select id="oneweek_recharge" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse  where f_use='충전' and  stu_id = #{stu_id} and date > date(subdate(curdate(), interval 7 day)) order by date 
+	</select>
+	
+	<!-- 1개월 충전내역 -->
+	<select id="onemonth_recharge" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse  where f_use='충전' and  stu_id = #{stu_id} and date > date(subdate(curdate(), interval 1 month)) order by date 
+	</select>
+	
+	<!-- 3개월 충전내역 -->
+	<select id="threemonth_recharge" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse  where f_use='충전' and  stu_id = #{stu_id} and date > date(subdate(curdate(), interval 3 month)) order by date 
+	</select>
 </mapper>

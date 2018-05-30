@@ -19,7 +19,7 @@
 		<input type="submit" value="충전하기"></form>
 		<form method="post" action="ViewUse.Page">
 		<input type="submit" value="사용내역"></form>
-		<form method="post" action="ViewRecharge.do">
+		<form method="post" action="ViewRecharge.Page">
 		<input type="submit" value="충전내역"></form>
 </body>
 </html>

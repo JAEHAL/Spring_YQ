@@ -43,7 +43,7 @@ public class ForuseController {
 		
 		model.addAttribute("oneweek", oneweek);
 		
-		return "Student/OneWeek_Foruse";
+		return "Student/Foruse_OneWeek";
 	}
 	
 	//1개월 사용 내역
@@ -54,7 +54,7 @@ public class ForuseController {
 		
 		model.addAttribute("onemonth", onemonth);
 		
-		return "Student/OneMonth_Foruse";
+		return "Student/Foruse_OneMonth";
 	}
 	
 	//3개월 사용 내역
@@ -65,6 +65,6 @@ public class ForuseController {
 		
 		model.addAttribute("threemonth", threemonth);
 		
-		return "Student/ThreeMonth_Foruse";
+		return "Student/Foruse_ThreeMonth";
 	}
 }

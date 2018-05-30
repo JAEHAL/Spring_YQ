@@ -73,4 +73,40 @@ public class RechargeDAOImpl implements RechargeDAO {
 		
 		return sqlSession.selectList(namespace + ".recharge_sql2", sVo);
 	}
+
+	//충전 내역 1주일
+	@Override
+	public List<ForuseVO> OneWeek_Recharge(HttpSession session) {
+
+		String stu_id = (String)session.getAttribute("login_id");
+		
+		ForuseVO fVo = new ForuseVO();
+		fVo.setStu_id(stu_id);
+		
+		return sqlSession.selectList(namespace + ".oneweek_recharge", fVo);
+	}
+
+	//충전 내역 1개월
+	@Override
+	public List<ForuseVO> OneMonth_Recharge(HttpSession session) {
+		
+		String stu_id = (String)session.getAttribute("login_id");
+		
+		ForuseVO fVo = new ForuseVO();
+		fVo.setStu_id(stu_id);
+		
+		return sqlSession.selectList(namespace + ".onemonth_recharge", fVo);
+	}
+
+	//충전 내역 3개월
+	@Override
+	public List<ForuseVO> ThreeMonth_Recharge(HttpSession session) {
+		
+		String stu_id = (String)session.getAttribute("login_id");
+		
+		ForuseVO fVo = new ForuseVO();
+		fVo.setStu_id(stu_id);
+		
+		return sqlSession.selectList(namespace + ".threemonth_recharge", fVo);
+	}
 }
