@@ -17,7 +17,7 @@
 		<input type="submit" value="메뉴보기"></form>
 		<form method="post" action="Recharge.Page">
 		<input type="submit" value="충전하기"></form>
-		<form method="post" action="ViewUse.do">
+		<form method="post" action="ViewUse.Page">
 		<input type="submit" value="사용내역"></form>
 		<form method="post" action="ViewRecharge.do">
 		<input type="submit" value="충전내역"></form>

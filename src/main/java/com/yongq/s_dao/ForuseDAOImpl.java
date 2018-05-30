@@ -11,7 +11,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.yongq.s_dto.ForuseVO;
-import com.yongq.s_dto.MenuVO;
 import com.yongq.s_dto.StudentVO;
 
 @Repository
@@ -76,6 +75,40 @@ public class ForuseDAOImpl implements ForuseDAO {
 		session.setAttribute("new_change", sVo.getStu_change()); // 충전할 때의 학생 잔액 session이름과 똑같은데 오류 안남
 		
 		return sqlSession.selectList(namespace + ".foruse_sql2", sVo);
+	}
+
+	//사용 내역 1주일
+	@Override
+	public List<ForuseVO> OneWeek_Foruse(HttpSession session) {
+		
+		String stu_id = (String)session.getAttribute("login_id");
+		
+		ForuseVO fVo = new ForuseVO();
+		fVo.setStu_id(stu_id);
+		
+		return sqlSession.selectList(namespace + ".oneweek_foruse", fVo);
+	}
+
+	@Override
+	public List<ForuseVO> OneMonth_Foruse(HttpSession session) {
+		
+		String stu_id = (String)session.getAttribute("login_id");
+		
+		ForuseVO fVo = new ForuseVO();
+		fVo.setStu_id(stu_id);
+		
+		return sqlSession.selectList(namespace + ".onemonth_foruse", fVo);
+	}
+
+	@Override
+	public List<ForuseVO> ThreeMonth_Foruse(HttpSession session) {
+		
+		String stu_id = (String)session.getAttribute("login_id");
+		
+		ForuseVO fVo = new ForuseVO();
+		fVo.setStu_id(stu_id);
+		
+		return sqlSession.selectList(namespace + ".threemonth_foruse", fVo);
 	}
 
 }

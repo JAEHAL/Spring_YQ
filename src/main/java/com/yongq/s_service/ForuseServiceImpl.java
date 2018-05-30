@@ -28,4 +28,22 @@ public class ForuseServiceImpl implements ForuseService {
 		return fDao.setForuse2(session);
 	}
 
+	@Override
+	public List<ForuseVO> OneWeek_Foruse(HttpSession session) {
+		
+		return fDao.OneWeek_Foruse(session);
+	}
+
+	@Override
+	public List<ForuseVO> OneMonth_Foruse(HttpSession session) {
+		
+		return fDao.OneMonth_Foruse(session);
+	}
+
+	@Override
+	public List<ForuseVO> ThreeMonth_Foruse(HttpSession session) {
+		
+		return fDao.ThreeMonth_Foruse(session);
+	}
+
 }
