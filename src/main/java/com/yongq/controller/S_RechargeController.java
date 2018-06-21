@@ -6,20 +6,23 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yongq.s_dao.StudentDAO;
+import com.yongq.s_dao.RechargeDAO;
 import com.yongq.s_dto.ForuseVO;
 import com.yongq.s_dto.RechargeVO;
-import com.yongq.s_dto.StudentVO;
 import com.yongq.s_service.RechargeService;
-import com.yongq.s_service.StudentServiceImpl;
 
 @Controller
-public class RechargeController {
+public class S_RechargeController {
 
+	@Autowired
+	private SqlSession sqlSession;
+	
 	@Inject
 	RechargeService rechargeService;
 	
@@ -36,8 +39,7 @@ public class RechargeController {
 		
 		List<RechargeVO> setRecharge1 = rechargeService.setRecharge1(request, session);
 		List<RechargeVO> setRecharge2 = rechargeService.setRecharge2(request, session);
-		
-		
+			
 		return "Student/Student_Main";
 	}
 	

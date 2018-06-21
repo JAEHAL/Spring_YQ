@@ -7,8 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>주간 메뉴</title>
 </head>
-<body>
-<a href="Menu.do">뒤로</a>
+<body><!-- 
+<form action="back_page" method="post">
+<input type="submit" value="뒤로">
+</form> -->
+<!-- <a href="Menu.do">뒤로</a> -->
 <center>
 <h2>주간 메뉴</h2>
 <table border="1">

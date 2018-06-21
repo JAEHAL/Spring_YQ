@@ -1,7 +1,5 @@
 package com.yongq.controller;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,19 +10,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.yongq.a_dto.AdminVO;
-import com.yongq.a_service.AdminService;
 import com.yongq.s_dto.StudentVO;
 import com.yongq.s_service.StudentService;
 
 @Controller
-public class LoginController {
+public class S_LoginController {
 
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(S_LoginController.class);
 	
 	@Inject
 	StudentService sDao;
-	AdminService aDao;
 	
 	//db값 테스트
 	/*@RequestMapping(value="/student")
@@ -41,17 +36,6 @@ public class LoginController {
 	String back_main_page() {
 		
 		return "Student/Student_Main";
-	}
-	
-	//관리자 예제
-	@RequestMapping(value="/admin_ex")
-	String admin(Model model, HttpServletRequest request) {
-		
-		List<AdminVO> list = aDao.Admin();
-		
-		model.addAttribute("ex", list);
-		
-		return "admin";
 	}
 	
 	//학생 로그인 화면
@@ -73,19 +57,21 @@ public class LoginController {
 		
 		if(!stu_pw.equals("") && stu_pw.equals(check_login.getStu_pw())) {
 		
-			StudentVO login_info = sDao.LoginInfo(request);
+			StudentVO sVo = sDao.LoginInfo(request);
 			
 			logger.info("로그인 성공");
 			//logger.info(login_info.getStu_name());
 			
-			int stu_change = login_info.getStu_change();
-			String stu_name = login_info.getStu_name();
+			int stu_change = sVo.getStu_change();
+			String stu_name = sVo.getStu_name();
 			//logger.info("잔액 : " + stu_change);
 			
 			session.setAttribute("login_id", stu_id); // 충전 시 학생 정보 변경을 위한 세션
 			session.setAttribute("login_change", stu_change); // 충전 할 때 db정보 바뀌기위한 세션
 			session.setAttribute("login_name", stu_name); // 메인페이지 학생 이름 보여주기 위한 세션
 	
+			session.setAttribute("login_info", sVo);
+			
 			return "Student/Student_Main";
 		} else {
 			logger.info("로그인 실패");
@@ -102,49 +88,6 @@ public class LoginController {
 		return "Student/Student_Info";
 	}
 	
-	//관리자 로그인 화면
-	@RequestMapping(value="/Ad_Login_Page.do")
-	String admin_login_page() {
-		
-		return "Admin/Admin_Login";
-	}
-	
-	//관리자에서 학생 로그인 화면
-	@RequestMapping(value="/Stu_Login_Page.do")
-	String student_login_page() {
-		
-		return "Student/Student_Login";
-	}
-	
-	//관리자 로그인 작동
-	@RequestMapping(value="/Admin.do")
-	String AdminDo (Model model, HttpServletRequest request) {
-		
-		String ad_pw = request.getParameter("ad_pw");
-		
-		List<AdminVO> check_login = aDao.AdminCheck(request);
-		
-		model.addAttribute("ex", check_login);
-		
-		String pwd = check_login.get(0).getAd_pw();
-		//logger.info("비번 저장" + pwd);
-		
-		if(!ad_pw.equals("") && ad_pw.equals(pwd)) {
-		
-			List<AdminVO> login_info = aDao.AdminInfo(request);
-			
-			model.addAttribute("login_info", login_info);
-			
-			logger.info("로그인 성공");
-			
-			return "Admin/Admin_Main";
-		} else {
-			logger.info("로그인 실패");
-			
-			return "Admin/Admin_Login";
-		}
-	}
-	
 	//로그아웃 작동
 	//나중에 session하면 session제거 작업 해주기
 	@RequestMapping(value="/Logout.do")
@@ -152,4 +95,5 @@ public class LoginController {
 		
 		return "Student/Student_Login";
 	}
+
 }

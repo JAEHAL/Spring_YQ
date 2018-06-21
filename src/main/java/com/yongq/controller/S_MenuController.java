@@ -14,7 +14,7 @@ import com.yongq.s_dto.MenuVO;
 import com.yongq.s_service.MenuService;
 
 @Controller
-public class MenuController {
+public class S_MenuController {
 
 	@Inject
 	MenuService menuService;
@@ -51,7 +51,7 @@ public class MenuController {
 		
 		model.addAttribute("insung_menu", insung_menu);
 		
-		return "Student/Insung_Menu";
+		return "Student/Menu_Insung";
 	}
 	
 	//환과대
@@ -62,7 +62,7 @@ public class MenuController {
 		
 		model.addAttribute("hwan_menu", hwan_menu);
 		
-		return "Student/Hwan_Menu";
+		return "Student/Menu_Hwan";
 	}
 	
 	//생활관
@@ -73,7 +73,7 @@ public class MenuController {
 		
 		model.addAttribute("dorm_menu", dorm_menu);
 		
-		return "Student/Dorm_Menu";
+		return "Student/Menu_Dorm";
 	}
 	
 	//주간메뉴
@@ -84,6 +84,6 @@ public class MenuController {
 		
 		model.addAttribute("week_menu", week_menu);
 		
-		return "Student/Week_Menu";
+		return "Student/Menu_Week";
 	}
 }

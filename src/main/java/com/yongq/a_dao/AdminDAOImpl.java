@@ -1,7 +1,5 @@
 package com.yongq.a_dao;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,30 +18,22 @@ public class AdminDAOImpl implements AdminDAO {
 			"com.yongq.mapper.admin_login";
 
 	@Override
-	public List<AdminVO> AdminCheck(HttpServletRequest request) {
+	public AdminVO AdminCheck(HttpServletRequest request) {
 		
 		AdminVO aVo = new AdminVO();
 		aVo.setAd_id(request.getParameter("ad_id"));
 		
-		return sqlSession.selectList(namespace + ".AdminCheck", aVo);
+		return sqlSession.selectOne(namespace + ".AdminCheck", aVo);
 	}
 
 	@Override
-	public List<AdminVO> AdminInfo(HttpServletRequest request) {
+	public AdminVO AdminInfo(HttpServletRequest request) {
 
 		AdminVO aVo = new AdminVO();
 		aVo.setAd_id(request.getParameter("ad_id"));
-		aVo.setAd_pw(request.getParameter("ad_pw"));
 		
-		return sqlSession.selectList(namespace + ".AdminInfo", aVo);
+		return sqlSession.selectOne(namespace + ".AdminInfo", aVo);
 	}
-
-	@Override
-	public List<AdminVO> Admin() {
-		
-		return sqlSession.selectList(namespace, ".Admin");
-	}
-	
 	
 }
 

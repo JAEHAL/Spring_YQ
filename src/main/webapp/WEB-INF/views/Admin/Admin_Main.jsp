@@ -10,7 +10,7 @@
 <body>
 <form method="post" action="Admin_Login_Page.jsp">
 <input type="submit" value="뒤로"></form>
-<form method="post" action="Admin_Menu_Insert.jsp">
+<form method="post" action="Menu_Insert_Page.do">
 <input type="submit" value="메뉴 등록"></form>
 <form method="post" action="AdminMenuWeek.do">
 <input type="submit" value="메뉴 보기"></form>
@@ -21,7 +21,7 @@
 <form method="post" action="AdminInsungTot.do">
 <input type="submit" value="정산"></form>
 <div style="position:absolute; top:10px; left:370px">
-<form method="post" action="Admin_Login_Page.jsp"><input type="submit" value="로그아웃"></form>
+<form method="post" action="Logout2.do"><input type="submit" value="로그아웃"></form>
 </div>
 </body>
 </html>

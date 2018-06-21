@@ -1,7 +1,5 @@
 package com.yongq.a_service;
 
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,24 +15,15 @@ public class AdminServiceImpl implements AdminService {
 	AdminDAO aDao;
 
 	@Override
-	public List<AdminVO> AdminCheck(HttpServletRequest request) {
+	public AdminVO AdminCheck(HttpServletRequest request) {
 		
 		return aDao.AdminCheck(request);
 	}
 
 	@Override
-	public List<AdminVO> AdminInfo(HttpServletRequest request) {
+	public AdminVO AdminInfo(HttpServletRequest request) {
 		
 		return aDao.AdminInfo(request);
 	}
 
-	@Override
-	public List<AdminVO> Admin() {
-		
-		List<AdminVO> list = aDao.Admin();
-		
-		return list;
-	}
-
-	
 }

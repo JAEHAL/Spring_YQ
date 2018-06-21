@@ -13,7 +13,7 @@ import com.yongq.s_dto.ForuseVO;
 import com.yongq.s_service.ForuseService;
 
 @Controller
-public class ForuseController {
+public class S_ForuseController {
 
 	@Inject
 	ForuseService foruseService;

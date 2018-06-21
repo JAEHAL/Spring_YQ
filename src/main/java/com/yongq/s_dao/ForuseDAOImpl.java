@@ -63,16 +63,16 @@ public class ForuseDAOImpl implements ForuseDAO {
 		//MenuVO mVo = new MenuVO();
 		
 		String stu_id = (String)session.getAttribute("login_id");
-		int stu_change = (int)session.getAttribute("new_change");
+		//int stu_change = (int)session.getAttribute("new_change");
 		
 		//int stu_change = Integer.parseInt(get_stu_change);
 		
-		int update_stu_change = stu_change - 5000;
+		//int update_stu_change = sVo.getStu_change() - 5000;
 		
-		sVo.setStu_change(update_stu_change);
+		//sVo.setStu_change(update_stu_change);
 		sVo.setStu_id(stu_id);
 		
-		session.setAttribute("new_change", sVo.getStu_change()); // 충전할 때의 학생 잔액 session이름과 똑같은데 오류 안남
+		//session.setAttribute("new_foruse_change", sVo.getStu_change());
 		
 		return sqlSession.selectList(namespace + ".foruse_sql2", sVo);
 	}

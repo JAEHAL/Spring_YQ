@@ -25,4 +25,9 @@
 		select * from menu where date >= date_add(curdate(), interval (dayofweek(curdate())-2)*- 1 day) order by chain, date ASC
 	</select>
 	
+	<!-- 관리자 메뉴 등록 -->
+	<insert id="MenuInsert" parameterType="com.yongq.s_dto.MenuVO">
+		insert into menu values(#{mn_id},#{chain},#{date},#{mn_name},#{mn_price},#{mn_type},#{mn_sold})
+	</insert>
+	
 </mapper>
