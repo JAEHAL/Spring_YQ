@@ -18,7 +18,7 @@
 <input type="submit" value="비밀번호 찾기"></form>
 <form method="post" action="AdminViewUse.do">
 <input type="submit" value="사용내역"></form>
-<form method="post" action="AdminInsungTot.do">
+<form method="post" action="TotForuse.do">
 <input type="submit" value="정산"></form>
 <div style="position:absolute; top:10px; left:370px">
 <form method="post" action="Logout2.do"><input type="submit" value="로그아웃"></form>

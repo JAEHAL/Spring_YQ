@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yongq.mapper.TotForuse">
+
+	<select id="TotForuse_Insung" parameterType="com.yongq.a_dto.TotForuseVO" resultType="com.yongq.a_dto.TotForuseVO">
+		select sum(mn_price) from foruse where f_use='사용' and chain='인성관' and date like concat(#{},'%')
+	</select>
+</mapper>
