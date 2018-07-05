@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
 <br><br><br>
-<form method="post" action="AdminPw.do">
+<form method="post" action="FindPW.do">
 <center><h1>비밀번호 찾기</h1></center><br><br>
 <table cellpadding="10px">
  	<tr>
@@ -17,17 +18,15 @@
 	</tr>
 	<tr>
 		<td>이름</td>	
-		<%-- <td>${UserPw.stu_name}</td> --%>
+		<td>${found_name}</td>
 	</tr>
 	<tr>
 		<td>비밀번호</td>
-		<%-- <td>${UserPw.stu_pw}</td> --%>
-	</tr>	
+		<td>${found_pw}</td>
+	</tr>
 	</table><br>
-	
-	<input type="submit" value="찾기">
-<!-- 	<a href='#' onclick="history.go(0)">새로고침</a> -->
-	<h2>${message}</h2>
+<input type="submit" value="찾기">
+	<%-- <h2>${message}</h2> --%>
 </form>
 </body>
 </html>

@@ -14,7 +14,7 @@
 <input type="submit" value="메뉴 등록"></form>
 <form method="post" action="AdminMenuWeek.do">
 <input type="submit" value="메뉴 보기"></form>
-<form method="post" action="Admin_Menu_Pw.jsp">
+<form method="post" action="FindMenuPage.do">
 <input type="submit" value="비밀번호 찾기"></form>
 <form method="post" action="AdminViewUse.do">
 <input type="submit" value="사용내역"></form>
