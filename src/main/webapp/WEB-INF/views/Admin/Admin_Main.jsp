@@ -16,7 +16,7 @@
 <input type="submit" value="메뉴 보기"></form>
 <form method="post" action="FindMenuPage.do">
 <input type="submit" value="비밀번호 찾기"></form>
-<form method="post" action="AdminViewUse.do">
+<form method="post" action="ViewUsePage">
 <input type="submit" value="사용내역"></form>
 <form method="post" action="TotForuse.do">
 <input type="submit" value="정산"></form>

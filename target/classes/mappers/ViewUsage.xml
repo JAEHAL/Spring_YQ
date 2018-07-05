@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yongq.mapper.ViewUsage">
+	
+	<!-- 사용내역 리스트 -->
+	<select id="ForuseList" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse where f_use='사용' order by date desc	
+	</select>
+
+	<!-- 충전내역 리스트 -->
+	<select id="RechargeList" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse where f_use='충전' order by date desc
+	</select>
+	
+	<!-- 사용내역 학번 검색시 리스트 -->
+	<select id="ID_Search_Foruse" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse where f_use='사용' and stu_id=#{stu_id} order by date desc
+	</select>
+	
+	<!-- 충전내역 학번 검색시 리스트 -->
+	<select id="ID_Search_Recharge" parameterType="com.yongq.s_dto.ForuseVO" resultType="com.yongq.s_dto.ForuseVO">
+		select * from foruse where f_use='충전' and stu_id=#{stu_id} order by date desc
+	</select>
+	
+</mapper>
